@@ -1,0 +1,37 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Encyclopedia
+{% endblock %}
+
+{% block body %}
+<h1>Create/Edite New Page</h1>
+
+{% if exists %}
+    <h3>Page already exists</h3>
+{% elif noTitleroContent %}
+    <h3>Please entry both the Title and Content </h3>
+{%endif%}
+
+<br>
+
+
+<!-- <h2>{{title}}</h2>
+<form action="{%url 'add' %}" method="POST">
+    {% csrf_token %}
+    <textarea name="content" cols="30" rows="10">{{entry}}</textarea>
+    <br>
+    <input type="submit" value="Save">
+</form> -->
+
+<form action="{%url 'add' %}" method="POST">
+    <label>Title of the Page</label>
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="title">
+    <br><br>
+    <textarea name="content" cols="30" rows="10" placeholder="Please entry Markdow content"></textarea>
+    <br>
+    <input type="submit" value="Save">
+</form>
+
+{% endblock %}
